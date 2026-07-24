@@ -8,6 +8,20 @@ See [`DESIGN.md`](DESIGN.md) for architecture, API contract, data model, chunkin
 RAG approach. See [`TOOLS_AND_AI.md`](TOOLS_AND_AI.md) for tools used and AI-assistance
 disclosure.
 
+## Screenshots
+
+### 1. Upload a PDF
+
+![Upload screen](docs/screenshots/1-upload.png)
+
+### 2. Automatic classification
+
+![Classification result](docs/screenshots/2-classification.png)
+
+### 3. Chat, grounded in the document (with expandable sources)
+
+![Grounded chat with sources](docs/screenshots/3-chat.png)
+
 ## Stack
 
 - **Backend**: Python 3.10+, FastAPI, SQLAlchemy, MySQL (PyMySQL driver), Google Gemini API
