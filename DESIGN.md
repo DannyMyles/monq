@@ -49,6 +49,17 @@ immediately with `status=processing` and the frontend polling `GET /{id}`. The s
 already models this (`uploaded → processing → ready | failed`) precisely so that upgrade path
 doesn't require a data-model change.
 
+**Why Python/FastAPI over Node.js/NestJS for the backend**: this service is dominated by
+text/NLP-adjacent work — PDF extraction, token-aware chunking, embedding calls, cosine-similarity
+ranking — and Python's ecosystem for that (`pypdf`, `tiktoken`, `numpy`) is more mature and
+ergonomic than the Node.js equivalents, and it's where the LLM/RAG tooling ecosystem is most
+mature and best-documented right now. FastAPI gives the same things NestJS is valued for — typed
+request/response models, dependency injection (`Depends`), automatic OpenAPI docs — with less
+structural boilerplate for a single-service scope like this one; NestJS's heavier module/DI
+conventions pay off more at multi-team, multi-service scale than they would here. This was a
+fit-for-purpose call, not a gap — I write comfortably in NestJS as well, and would reach for it
+without hesitation on a more service-heavy, multi-team backend.
+
 ## 2. API Contract
 
 | Method | Path | Request | Response | Notes |
